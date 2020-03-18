@@ -17,33 +17,26 @@ struct NewsListViewModel: NewsListViewBindable {
     var willDisplayCell: PublishRelay<IndexPath>
     
 //    vm -> v
-    var cellData: Driver<[NewsItemDetail]>
+    var cellData: Driver<[NewsItem]>
     var reloadList: Signal<Void>
     var errorMessage: Signal<String>
     
-    
     let responseParser: ResponseParser
-    let htmlParser: HTMLParser
-
-    init(responseParser: ResponseParser = ResponseParserImpl(), htmlParser: HTMLParser = HTMLParserImpl()) {
+    
+    init(reponseParser: ResponseParser = ResponseParserImpl()) {
         
-        self.responseParser = responseParser
-        self.htmlParser = htmlParser
+        let newsListResult = viewWillAppear
+            .flatMapLatest(reponseParser.getParsedXML())
+        
+        
+        
+        
+        self.cellData =
+        
+        self.reloadList =
+        
     }
     
     
-    func process() {
-        
-        self.responseParser.startXMLParsing()
-        let newsItems = self.responseParser.newsItems
-        
-        for i in newsItems {
-            let url = URL(string: i.link)
-            htmlParser.startHTMLParsing(linkURL: url!)
-        }
-        
-        self.htmlParser.newsItemDetails
-        
-    }
     
 }

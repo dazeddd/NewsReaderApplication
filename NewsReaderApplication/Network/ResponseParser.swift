@@ -7,29 +7,43 @@
 //
 
 import Foundation
+import RxCocoa
+import RxSwift
 
 protocol ResponseParser {
     
     var newsItems: [NewsItem] { get }
     
-    func startXMLParsing()
+    func getParsedXML() -> Observable<[NewsItem]>
 }
+
+enum NewsError: Error {
+    
+    case parsing
+}
+
+
 
 class ResponseParserImpl: NSObject, XMLParserDelegate, ResponseParser {
     
+    
     var currentElement = ""
     
-    var newsItem = NewsItem(title: "", link: "")
+    var newsItem = NewsItem(title: "", link: "", newsDetail: NewsItemDetail(thumnailURL: "", description: ""))
     var newsItems = [NewsItem]()
     var title: String = ""
     var link: String = ""
     
     var flag: Bool = false
     
-    func startXMLParsing() {
+    // Observable 한 return 값을
+    func getParsedXML() -> Observable<Result<[NewsItem],NewsError>> {
         
         let rssURL = URL(string: "https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko")
+        
+        // session.rx.data
         guard let parser = XMLParser(contentsOf: rssURL!) else {
+            
             return
         }
         
@@ -38,7 +52,7 @@ class ResponseParserImpl: NSObject, XMLParserDelegate, ResponseParser {
         parser.parse()
         
         
-        
+        return 
     }
     
     
@@ -71,9 +85,14 @@ class ResponseParserImpl: NSObject, XMLParserDelegate, ResponseParser {
     public func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == "item" {
             
-            newsItem = NewsItem(title: title, link: link)
+            let htmlParser = HTMLParserImpl()
             
+            let url = URL(string: link)
+            let newsItemDetail = htmlParser.startHTMLParsing(linkURL: url!)
+            
+            let newsItem = NewsItem(title: title, link: link, newsDetail: newsItemDetail)
             newsItems.append(newsItem)
+            
         }
     }
     

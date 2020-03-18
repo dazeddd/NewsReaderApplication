@@ -9,20 +9,21 @@
 import Foundation
 import SwiftSoup
 
-protocol HTMLParser {
-    
-    var newsItemDetails: [NewsItemDetail] { get }
-    
-    func startHTMLParsing(linkURL: URL)
-    
-}
+//protocol HTMLParser {
+//
+//    var newsItemDetails: [NewsItemDetail] { get }
+//
+//    func startHTMLParsing(linkURL: URL)
+//
+//}
 
 
-class HTMLParserImpl: HTMLParser {
+
+class HTMLParserImpl {
     
-    var newsItemDetails = [NewsItemDetail]()
+//    var newsItemDetails = [NewsItemDetail]()
     
-    func startHTMLParsing(linkURL: URL) {
+    func startHTMLParsing(linkURL: URL) -> NewsItemDetail {
         
         
         do {
@@ -34,7 +35,8 @@ class HTMLParserImpl: HTMLParser {
             let mainTextPartial = try doc.select("head > meta[property='og:description']").attr("content")
        
             let newsItemDetail = NewsItemDetail(thumnailURL:thumnailURL , description: mainTextPartial)
-            newsItemDetails.append(newsItemDetail)
+            
+            return newsItemDetail
                 
             } catch {
                 print("parsing error!!")

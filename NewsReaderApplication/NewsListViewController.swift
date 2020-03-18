@@ -19,7 +19,7 @@ protocol NewsListViewBindable {
     
     
 //    ViewModel -> View
-    var cellData: Driver<[NewsItemDetail]> { get }
+    var cellData: Driver<[NewsItem]> { get }
     var reloadList: Signal<Void> { get }
     var errorMessage: Signal<String> { get }
 }
@@ -28,7 +28,9 @@ protocol NewsListViewBindable {
 
 class NewsListViewController: UIViewController {
     
-    @IBOutlet weak var newsListView: UITableView!
+//    @IBOutlet weak var newsListView: UITableView!
+    let newsListView = UITableView()
+    
     var disposeBag = DisposeBag()
     
     
@@ -46,10 +48,26 @@ class NewsListViewController: UIViewController {
             .bind(to: viewModel.willDisplayCell)
             .disposed(by: disposeBag)
         
+        
+        
 //        vm -> v
-        viewModel.cellData.drive(newsListView.rx.items) { }
+        viewModel.cellData
+        .drive(newsListView.rx.items) { tv, row, data in
+            let index = IndexPath(row: row, section: 0)
+            let cell = tv.dequeueReusableCell(withIdentifier: String(describing: NewsCustomCell.self), for: index) as! NewsCustomCell
+            
+            cell.setData(data: data)
+            
+            return cell
+        }
+        .disposed(by: disposeBag)
         
         
+        viewModel.reloadList
+        .emit(onNext: { [weak self] _ in
+            self?.newsListView.reloadData()
+            })
+        .disposed(by: disposeBag)
         
         
     }
@@ -60,6 +78,7 @@ class NewsListViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        newsListView.register(NewsCustomCell.self, forCellReuseIdentifier: "newsCell")
         
         
     }
@@ -72,24 +91,28 @@ class NewsListViewController: UIViewController {
  
 }
 
-extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        return
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
-    }
-    
-
-    
-}
+//extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//
+//        return
+//    }
+//
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//        return
+//    }
+//
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//
+//
+//    }
+//
+//    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+//
+//
+//
+//    }
+//
+//}

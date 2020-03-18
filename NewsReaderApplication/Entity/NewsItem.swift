@@ -13,6 +13,7 @@ struct NewsItem {
     let title: String
     let link: String
     
+    let newsDetail: NewsItemDetail
 }
 
 

@@ -132,12 +132,11 @@
 			isa = PBXGroup;
 			children = (
 				FF4BA0C42420EB7E004CF912 /* Views */,
-				FF4BA0B52420925C004CF912 /* Models */,
+				FF4BA0B52420925C004CF912 /* Entity */,
 				FF4BA0B22420858A004CF912 /* Network */,
 				FF4BA089242076D9004CF912 /* AppDelegate.swift */,
 				FF4BA08B242076D9004CF912 /* SceneDelegate.swift */,
 				FF4BA0B0242084DC004CF912 /* NewsListViewController.swift */,
-				FF4BA0BC2420BE7F004CF912 /* NewsCustomCell.swift */,
 				FF4BA0C72420EE8C004CF912 /* NewsListViewModel.swift */,
 				FF4BA0C22420E238004CF912 /* NewsDetailViewContoller.swift */,
 				FF4BA08F242076D9004CF912 /* Main.storyboard */,
@@ -168,19 +167,20 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		FF4BA0B52420925C004CF912 /* Models */ = {
+		FF4BA0B52420925C004CF912 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
 				FF4BA0B624209282004CF912 /* NewsItem.swift */,
 				FF4BA0C02420D484004CF912 /* NewsItemDetail.swift */,
 			);
-			path = Models;
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		FF4BA0C42420EB7E004CF912 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				FF4BA0C52420EBBB004CF912 /* ButtonStackView.swift */,
+				FF4BA0BC2420BE7F004CF912 /* NewsCustomCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
