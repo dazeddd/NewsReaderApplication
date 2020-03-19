@@ -47,20 +47,20 @@ class NewsCustomCell: UITableViewCell {
     }
     
     
-    func setData(data: NewsItem) {
-        
-        do {
-            let imageData = try Data(contentsOf: URL(string: data.newsDetail.thumnailURL)!)
-            thumnailImageView.image = UIImage(data: imageData)
-        } catch {
-            print("cannot set thumnail image!!!")
-        }
-        
-        newsTitleLabel.text = data.title
-        // 라벨에 맞게 길이 조절해야 하는데..
-        newsTextPiece.text = data.newsDetail.description
-        keywordGroup.buttonGroup.addA
-    
-    }
+//    func setData(data: NewsItem) {
+//
+//        do {
+//            let imageData = try Data(contentsOf: URL(string: data.newsDetail.thumnailURL)!)
+//            thumnailImageView.image = UIImage(data: imageData)
+//        } catch {
+//            print("cannot set thumnail image!!!")
+//        }
+//
+//        newsTitleLabel.text = data.title
+//        // 라벨에 맞게 길이 조절해야 하는데..
+//        newsTextPiece.text = data.newsDetail.description
+//        keywordGroup.buttonGroup.addA
+//
+//    }
 
 }

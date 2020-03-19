@@ -10,12 +10,12 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-protocol ResponseParser {
-    
-    var newsItems: [NewsItem] { get }
-    
-    func getParsedXML() -> Observable<[NewsItem]>
-}
+//protocol ResponseParser {
+//
+//    var newsItems: [NewsItem] { get }
+//
+//    func getParsedXML() -> Result<[NewsItem],NewsError>
+//}
 
 enum NewsError: Error {
     
@@ -24,7 +24,7 @@ enum NewsError: Error {
 
 
 
-class ResponseParserImpl: NSObject, XMLParserDelegate, ResponseParser {
+class ResponseParserImpl: NSObject, XMLParserDelegate {
     
     
     var currentElement = ""
@@ -37,22 +37,22 @@ class ResponseParserImpl: NSObject, XMLParserDelegate, ResponseParser {
     var flag: Bool = false
     
     // Observable 한 return 값을
-    func getParsedXML() -> Observable<Result<[NewsItem],NewsError>> {
+    func getParsedXML(completion: @escaping (Result<[NewsItem],NewsError>) -> Void ) {
         
         let rssURL = URL(string: "https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko")
         
         // session.rx.data
         guard let parser = XMLParser(contentsOf: rssURL!) else {
             
-            return
+            completion(.failure(.parsing))
         }
         
         parser.delegate = self
         // parsing start
         parser.parse()
         
+        completion(.success(newsItems))
         
-        return 
     }
     
     

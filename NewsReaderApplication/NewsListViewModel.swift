@@ -10,23 +10,14 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-struct NewsListViewModel: NewsListViewBindable {
+struct NewsListViewModel {
     
-//    v -> vm
-    var viewWillAppear: PublishRelay<Void>
-    var willDisplayCell: PublishRelay<IndexPath>
-    
-//    vm -> v
-    var cellData: Driver<[NewsItem]>
-    var reloadList: Signal<Void>
-    var errorMessage: Signal<String>
+
     
     let responseParser: ResponseParser
     
     init(reponseParser: ResponseParser = ResponseParserImpl()) {
         
-        let newsListResult = viewWillAppear
-            .flatMapLatest(reponseParser.getParsedXML())
         
         
         
