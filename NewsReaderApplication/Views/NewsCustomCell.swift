@@ -7,16 +7,29 @@
 //
 
 import UIKit
+import SnapKit
 
 class NewsCustomCell: UITableViewCell {
     
     let thumnailImageView = UIImageView()
     let newsTitleLabel  = UILabel()
     let newsTextPiece = UILabel()
-    let keywordGroup = ButtonStackView()
+    let keywordGroup = UILabel()
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        // default image
+        thumnailImageView.image = UIImage(named: "noimage")
+
+//        keywordGroup.axis = .horizontal
+//        keywordGroup.alignment = .fill
+//        keywordGroup.distribution = .fillProportionally
+//        keywordGroup.spacing = 3
+//        keywordGroup.translatesAutoresizingMaskIntoConstraints = false
+
+        
         
         layout()
     }
@@ -25,23 +38,45 @@ class NewsCustomCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    
     
     private func layout() {
         
         [thumnailImageView, newsTitleLabel, newsTextPiece, keywordGroup]
             .forEach { self.addSubview($0) }
         
-//        나중에
+        thumnailImageView.snp.makeConstraints { (make) in
+            make.top.equalTo(self).offset(20)
+            make.bottom.equalTo(self).offset(-20)
+            make.left.equalTo(self).offset(20)
+            
+            make.width.height.equalTo(110)
+        }
+        
+        newsTitleLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(thumnailImageView.snp.right).offset(20)
+            make.top.equalTo(self).offset(20)
+            make.right.equalTo(self).offset(-10)
+        }
+        
+        newsTextPiece.snp.makeConstraints { (make) in
+            make.top.equalTo(newsTitleLabel.snp.bottom).offset(20)
+            make.left.equalTo(thumnailImageView.snp.right).offset(20)
+            make.right.equalTo(self).offset(-10)
+        }
+        
+        
+        keywordGroup.snp.makeConstraints { (make) in
+            make.top.equalTo(newsTextPiece.snp.bottom).offset(20)
+            make.left.equalTo(thumnailImageView.snp.right).offset(20)
+            make.bottom.equalTo(self).offset(-20)
+            make.right.equalTo(self).offset(-10)
+        }
+        
+        
+        
+        
+        
         
         
     }

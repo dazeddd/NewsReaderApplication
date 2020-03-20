@@ -28,13 +28,15 @@ class ResponseParserImpl: NSObject, XMLParserDelegate {
     
     
     var currentElement = ""
-    
-    var newsItem = NewsItem(title: "", link: "", newsDetail: NewsItemDetail(thumnailURL: "", description: ""))
-    var newsItems = [NewsItem]()
+    var newsItem: NewsItem!
+    var newsItemDetail: NewsItemDetail!
+    var newsItems: [NewsItem] = []
     var title: String = ""
     var link: String = ""
     
     var flag: Bool = false
+    
+    let htmlParser = HTMLParserImpl()
     
     // Observable 한 return 값을
     func getParsedXML(completion: @escaping (Result<[NewsItem],NewsError>) -> Void ) {
@@ -44,7 +46,7 @@ class ResponseParserImpl: NSObject, XMLParserDelegate {
         // session.rx.data
         guard let parser = XMLParser(contentsOf: rssURL!) else {
             
-            completion(.failure(.parsing))
+            return
         }
         
         parser.delegate = self
@@ -72,11 +74,11 @@ class ResponseParserImpl: NSObject, XMLParserDelegate {
     public func parser(_ parser: XMLParser, foundCharacters string: String) {
         if currentElement == "title" {
             
-            title = string
+            self.title = string
         }
         else if currentElement == "link" {
             
-            link = string
+            self.link = string
             
         }
         
@@ -85,12 +87,12 @@ class ResponseParserImpl: NSObject, XMLParserDelegate {
     public func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == "item" {
             
-            let htmlParser = HTMLParserImpl()
             
-            let url = URL(string: link)
-            let newsItemDetail = htmlParser.startHTMLParsing(linkURL: url!)
             
-            let newsItem = NewsItem(title: title, link: link, newsDetail: newsItemDetail)
+            let url = URL(string: self.link)
+            newsItemDetail = htmlParser.startHTMLParsing(linkURL: url!)
+            
+            newsItem = NewsItem(title: self.title, link: self.link, newsDetail: self.newsItemDetail)
             newsItems.append(newsItem)
             
         }

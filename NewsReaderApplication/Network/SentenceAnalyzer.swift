@@ -7,14 +7,21 @@
 //
 
 import Foundation
+import UIKit
 
 class SentenceAnalyzer {
     
-    func startAnalizing(sentence: String) {
+    func startAnalizing(sentence: String) -> [String] {
         
+        var keywordList: [String] = []
         
+//        sentence.split(separator: " ")
         
+        keywordList.append(contentsOf: ["사과", "딸기", "바나나"])
+        
+        return keywordList
         
     }
+    
     
 }

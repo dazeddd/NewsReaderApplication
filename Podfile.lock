@@ -12,6 +12,7 @@ PODS:
   - RxSwift (5.1.0)
   - RxTest (5.1.0):
     - RxSwift (~> 5)
+  - SnapKit (5.0.1)
   - SwiftSoup (2.3.0)
 
 DEPENDENCIES:
@@ -20,6 +21,7 @@ DEPENDENCIES:
   - RxCocoa (~> 5)
   - RxSwift (~> 5)
   - RxTest (~> 5)
+  - SnapKit (~> 5.0.0)
   - SwiftSoup
 
 SPEC REPOS:
@@ -30,6 +32,7 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - RxTest
+    - SnapKit
     - SwiftSoup
 
 SPEC CHECKSUMS:
@@ -39,8 +42,9 @@ SPEC CHECKSUMS:
   RxRelay: a168bd6caf712d00c676ac344e9295afc93b418e
   RxSwift: ad5874f24bb0dbffd1e9bb8443604e3578796c7a
   RxTest: d5e1c9c1880de2751041fa485d476ce006967b31
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftSoup: d78683f7ea0ae5733225a9e1d3bee5b256449df4
 
-PODFILE CHECKSUM: d03117807603dd8cc146cd24d1735bf6e1b548fb
+PODFILE CHECKSUM: 17a366c705fdbad6570d901b4ea99a0a8901bfe3
 
 COCOAPODS: 1.8.4

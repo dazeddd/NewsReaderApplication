@@ -24,8 +24,7 @@
 		FF4BA0BF2420C728004CF912 /* HTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4BA0BE2420C728004CF912 /* HTMLParser.swift */; };
 		FF4BA0C12420D484004CF912 /* NewsItemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4BA0C02420D484004CF912 /* NewsItemDetail.swift */; };
 		FF4BA0C32420E238004CF912 /* NewsDetailViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4BA0C22420E238004CF912 /* NewsDetailViewContoller.swift */; };
-		FF4BA0C62420EBBB004CF912 /* ButtonStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4BA0C52420EBBB004CF912 /* ButtonStackView.swift */; };
-		FF4BA0C82420EE8C004CF912 /* NewsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4BA0C72420EE8C004CF912 /* NewsListViewModel.swift */; };
+		FF4BA0CC24232211004CF912 /* SampleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4BA0CB24232211004CF912 /* SampleTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,8 +62,7 @@
 		FF4BA0BE2420C728004CF912 /* HTMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLParser.swift; sourceTree = "<group>"; };
 		FF4BA0C02420D484004CF912 /* NewsItemDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItemDetail.swift; sourceTree = "<group>"; };
 		FF4BA0C22420E238004CF912 /* NewsDetailViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewContoller.swift; sourceTree = "<group>"; };
-		FF4BA0C52420EBBB004CF912 /* ButtonStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStackView.swift; sourceTree = "<group>"; };
-		FF4BA0C72420EE8C004CF912 /* NewsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewModel.swift; sourceTree = "<group>"; };
+		FF4BA0CB24232211004CF912 /* SampleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTableViewController.swift; sourceTree = "<group>"; };
 		FFBB990F9214C143C6ED2209 /* Pods-NewsReaderApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsReaderApplication.debug.xcconfig"; path = "Target Support Files/Pods-NewsReaderApplication/Pods-NewsReaderApplication.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,7 +135,7 @@
 				FF4BA089242076D9004CF912 /* AppDelegate.swift */,
 				FF4BA08B242076D9004CF912 /* SceneDelegate.swift */,
 				FF4BA0B0242084DC004CF912 /* NewsListViewController.swift */,
-				FF4BA0C72420EE8C004CF912 /* NewsListViewModel.swift */,
+				FF4BA0CB24232211004CF912 /* SampleTableViewController.swift */,
 				FF4BA0C22420E238004CF912 /* NewsDetailViewContoller.swift */,
 				FF4BA08F242076D9004CF912 /* Main.storyboard */,
 				FF4BA095242076DD004CF912 /* Assets.xcassets */,
@@ -179,7 +177,6 @@
 		FF4BA0C42420EB7E004CF912 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FF4BA0C52420EBBB004CF912 /* ButtonStackView.swift */,
 				FF4BA0BC2420BE7F004CF912 /* NewsCustomCell.swift */,
 			);
 			path = Views;
@@ -374,14 +371,13 @@
 				FF4BA0B1242084DC004CF912 /* NewsListViewController.swift in Sources */,
 				FF4BA0C32420E238004CF912 /* NewsDetailViewContoller.swift in Sources */,
 				FF4BA0C12420D484004CF912 /* NewsItemDetail.swift in Sources */,
+				FF4BA0CC24232211004CF912 /* SampleTableViewController.swift in Sources */,
 				FF4BA0B724209282004CF912 /* NewsItem.swift in Sources */,
 				FF4BA0B4242085B0004CF912 /* ResponseParser.swift in Sources */,
 				FF4BA0BA2420A8C9004CF912 /* SentenceAnalyzer.swift in Sources */,
 				FF4BA08A242076D9004CF912 /* AppDelegate.swift in Sources */,
 				FF4BA094242076D9004CF912 /* NewsReaderApplication.xcdatamodeld in Sources */,
 				FF4BA08C242076D9004CF912 /* SceneDelegate.swift in Sources */,
-				FF4BA0C82420EE8C004CF912 /* NewsListViewModel.swift in Sources */,
-				FF4BA0C62420EBBB004CF912 /* ButtonStackView.swift in Sources */,
 				FF4BA0BD2420BE7F004CF912 /* NewsCustomCell.swift in Sources */,
 				FF4BA0BF2420C728004CF912 /* HTMLParser.swift in Sources */,
 			);
@@ -475,7 +471,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -529,7 +525,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -590,7 +586,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q8ZH9Z7LV2;
 				INFOPLIST_FILE = NewsReaderApplicationTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -613,7 +609,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q8ZH9Z7LV2;
 				INFOPLIST_FILE = NewsReaderApplicationTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

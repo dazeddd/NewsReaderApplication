@@ -11,82 +11,34 @@ import RxCocoa
 import RxSwift
 import RxAppState
 
-//protocol NewsListViewBindable {
-//
-////    View -> ViewModel
-//    var viewWillAppear: PublishRelay<Void> { get }
-//    var willDisplayCell: PublishRelay<IndexPath> { get }
-//
-//
-////    ViewModel -> View
-//    var cellData: Driver<[NewsItem]> { get }
-//    var reloadList: Signal<Void> { get }
-//    var errorMessage: Signal<String> { get }
-//}
-
-
 
 class NewsListViewController: UIViewController {
     
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    
 //    @IBOutlet weak var newsListView: UITableView!
     let newsListView = UITableView()
+    let refershControl = UIRefreshControl()
     
-    var cellData: [NewsItem]
+    let responseParser = ResponseParserImpl()
+    let sentenceAnalyzer = SentenceAnalyzer()
     
     
-    
-//    var disposeBag = DisposeBag()
-    
-    // RxSwift 로 binding 하면 datasource 필요 없음
-//    func bind(_ viewModel: NewsListViewBindable) {
-//
-////        v -> vm
-//        self.rx.viewWillAppear
-//            .map{ _ in Void() }
-//            .bind(to: viewModel.viewWillAppear)
-//            .disposed(by: disposeBag)
-//
-//        newsListView.rx.willDisplayCell
-//            .map{ $0.indexPath }
-//            .bind(to: viewModel.willDisplayCell)
-//            .disposed(by: disposeBag)
-//
-//
-//
-////        vm -> v
-//        viewModel.cellData
-//        .drive(newsListView.rx.items) { tv, row, data in
-//            let index = IndexPath(row: row, section: 0)
-//            let cell = tv.dequeueReusableCell(withIdentifier: String(describing: NewsCustomCell.self), for: index) as! NewsCustomCell
-//
-//            cell.setData(data: data)
-//
-//            return cell
-//        }
-//        .disposed(by: disposeBag)
-//
-//
-//        viewModel.reloadList
-//        .emit(onNext: { [weak self] _ in
-//            self?.newsListView.reloadData()
-//            })
-//        .disposed(by: disposeBag)
-//
-//
-//    }
-    
+    var cellData: [NewsItem]!
     
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        newsListView.register(NewsCustomCell.self, forCellReuseIdentifier: "newsCell")
-        
-        let responseParser = ResponseParserImpl()
-        
-        
+        view.addSubview(newsListView)
         
         responseParser.getParsedXML(completion: { (result) in
             switch result {
@@ -97,17 +49,43 @@ class NewsListViewController: UIViewController {
                 
             }
         })
-        
-        
-        
-    }
-    
-    
-    private func layout() {
+
+        // Do any additional setup after loading the view.
+        newsListView.register(NewsCustomCell.self, forCellReuseIdentifier: "newsCell")
+        newsListView.delegate = self
+        newsListView.dataSource = self
         
         newsListView.frame = self.view.bounds
+        newsListView.refreshControl = self.refershControl
+        self.refershControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        self.refershControl.attributedTitle = NSAttributedString(string: "업데이트 진행 중")
+        
+        
+        
+        
     }
- 
+    
+    @objc func refresh() {
+        
+        getData {
+            
+            self.refershControl.endRefreshing()
+        }
+    }
+    
+    func getData(completion: @escaping () -> Void) {
+        responseParser.getParsedXML(completion: { (result) in
+            switch result {
+            case .success(let result):
+                self.cellData = result
+            case .failure(let error):
+                print(error)
+                
+            }
+            completion()
+        })
+    }
+    
 }
 
 extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -122,26 +100,52 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
 
         let cell = newsListView.dequeueReusableCell(withIdentifier: "newsCell", for: indexPath) as! NewsCustomCell
         
-        do {
-            let imageData = try Data(contentsOf: URL(string: cellData[indexPath.row].newsDetail.thumnailURL)!)
-            cell.thumnailImageView.image = UIImage(data: imageData)
+        
+        // thumbnail 이미지 설정
+        
+
+        if let url = URL(string: cellData[indexPath.row].newsDetail.thumnailURL) {
             
-        } catch {
-            
-            
+            do {
+                let imageData = try Data(contentsOf: url)
+                cell.thumnailImageView.image = UIImage(data: imageData)
+                
+            } catch {
+                print("cannot get imageData")
+                
+            }
         }
+            
+                
+//        }
+        
+        // 타이틀 텍스트
         cell.newsTitleLabel.text = cellData[indexPath.row].title
-        cell.newsTextPiece.text = cellData[indexPath.row].
+        // 뉴스 본문 일부
+        cell.newsTextPiece.text = cellData[indexPath.row].newsDetail.description
+        
+        
+        // 버튼 스택 뷰에 버튼 subview 로 추가하기
+        let keyword_list = sentenceAnalyzer.startAnalizing(sentence: cellData[indexPath.row].newsDetail.description)
+        let joinedKeyword = keyword_list.joined(separator: "/")
+        
+        cell.keywordGroup.text = joinedKeyword
         
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        
+        self.navigationController?.pushViewController(NewsDetailViewController(cellData: cellData[indexPath.row]), animated: true)
         
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 150
+    }
 
+    
     
 
 }
