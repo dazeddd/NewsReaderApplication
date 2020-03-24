@@ -7,69 +7,54 @@
 //
 
 import Foundation
-import RxCocoa
-import RxSwift
-
-//protocol ResponseParser {
-//
-//    var newsItems: [NewsItem] { get }
-//
-//    func getParsedXML() -> Result<[NewsItem],NewsError>
-//}
 
 enum NewsError: Error {
-    
+    case url
     case parsing
 }
 
 
-
 class ResponseParserImpl: NSObject, XMLParserDelegate {
     
-    
     var currentElement = ""
-    var newsItem: NewsItem!
-    var newsItemDetail: NewsItemDetail!
+    var newsItem: NewsItem = NewsItem(
+        title: "", link: "", newsDetail: NewsItemDetail(thumnailURL: "", description: "")
+    )
+    var newsItemDetail: NewsItemDetail = NewsItemDetail(thumnailURL: "", description: "")
     var newsItems: [NewsItem] = []
+    
     var title: String = ""
     var link: String = ""
     
-    var flag: Bool = false
+//    var flag: Bool = false
     
     let htmlParser = HTMLParserImpl()
     
-    // Observable 한 return 값을
     func getParsedXML(completion: @escaping (Result<[NewsItem],NewsError>) -> Void ) {
         
-        let rssURL = URL(string: "https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko")
+        guard let rssURL = URL(string: "https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko") else {
+            print("invalid rss url")
+            completion(.failure(.url))
+            return
+        }
         
-        // session.rx.data
-        guard let parser = XMLParser(contentsOf: rssURL!) else {
-            
+        guard let parser = XMLParser(contentsOf: rssURL) else {
+            print("cannot get XML")
+            completion(.failure(.parsing))
             return
         }
         
         parser.delegate = self
-        // parsing start
         parser.parse()
-        
         completion(.success(newsItems))
-        
     }
-    
-    
     
     
     public func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         
         currentElement = elementName
-        
-        if elementName == "item" {
-            
-            
-        }
-        
     }
+    
     
     public func parser(_ parser: XMLParser, foundCharacters string: String) {
         if currentElement == "title" {
@@ -87,27 +72,13 @@ class ResponseParserImpl: NSObject, XMLParserDelegate {
     public func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if elementName == "item" {
             
-            
-            
             let url = URL(string: self.link)
-            newsItemDetail = htmlParser.startHTMLParsing(linkURL: url!)
+            self.newsItemDetail = htmlParser.startHTMLParsing(linkURL: url!)
             
             newsItem = NewsItem(title: self.title, link: self.link, newsDetail: self.newsItemDetail)
             newsItems.append(newsItem)
-            
         }
     }
-    
-    // when finish parsing xml
-    func parserDidEndDocument(_ parser: XMLParser) {
-        
-        
-    }
-    
-    
-    
-    
+   
 }
 
-//#article_body > div:nth-child(1) > div > img
-//#YTN_Player > a > img:nth-child(2)

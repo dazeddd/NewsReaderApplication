@@ -11,10 +11,8 @@
 		FEDEED7AC87BC49468A14E54 /* Pods_NewsReaderApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 543D379BE3588810D766DF6D /* Pods_NewsReaderApplication.framework */; };
 		FF4BA08A242076D9004CF912 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4BA089242076D9004CF912 /* AppDelegate.swift */; };
 		FF4BA08C242076D9004CF912 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4BA08B242076D9004CF912 /* SceneDelegate.swift */; };
-		FF4BA091242076D9004CF912 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF4BA08F242076D9004CF912 /* Main.storyboard */; };
 		FF4BA094242076D9004CF912 /* NewsReaderApplication.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF4BA092242076D9004CF912 /* NewsReaderApplication.xcdatamodeld */; };
 		FF4BA096242076DD004CF912 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF4BA095242076DD004CF912 /* Assets.xcassets */; };
-		FF4BA099242076DD004CF912 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF4BA097242076DD004CF912 /* LaunchScreen.storyboard */; };
 		FF4BA0A4242076DE004CF912 /* NewsReaderApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4BA0A3242076DE004CF912 /* NewsReaderApplicationTests.swift */; };
 		FF4BA0B1242084DC004CF912 /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4BA0B0242084DC004CF912 /* NewsListViewController.swift */; };
 		FF4BA0B4242085B0004CF912 /* ResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4BA0B3242085B0004CF912 /* ResponseParser.swift */; };
@@ -24,7 +22,7 @@
 		FF4BA0BF2420C728004CF912 /* HTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4BA0BE2420C728004CF912 /* HTMLParser.swift */; };
 		FF4BA0C12420D484004CF912 /* NewsItemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4BA0C02420D484004CF912 /* NewsItemDetail.swift */; };
 		FF4BA0C32420E238004CF912 /* NewsDetailViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4BA0C22420E238004CF912 /* NewsDetailViewContoller.swift */; };
-		FF4BA0CC24232211004CF912 /* SampleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4BA0CB24232211004CF912 /* SampleTableViewController.swift */; };
+		FF6D1EE22429C58B009EF83F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF6D1EE12429C58B009EF83F /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,10 +44,8 @@
 		FF4BA086242076D9004CF912 /* NewsReaderApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsReaderApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF4BA089242076D9004CF912 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF4BA08B242076D9004CF912 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FF4BA090242076D9004CF912 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF4BA093242076D9004CF912 /* NewsReaderApplication.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NewsReaderApplication.xcdatamodel; sourceTree = "<group>"; };
 		FF4BA095242076DD004CF912 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FF4BA098242076DD004CF912 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF4BA09A242076DD004CF912 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF4BA09F242076DE004CF912 /* NewsReaderApplicationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsReaderApplicationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF4BA0A3242076DE004CF912 /* NewsReaderApplicationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsReaderApplicationTests.swift; sourceTree = "<group>"; };
@@ -62,7 +58,7 @@
 		FF4BA0BE2420C728004CF912 /* HTMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLParser.swift; sourceTree = "<group>"; };
 		FF4BA0C02420D484004CF912 /* NewsItemDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItemDetail.swift; sourceTree = "<group>"; };
 		FF4BA0C22420E238004CF912 /* NewsDetailViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewContoller.swift; sourceTree = "<group>"; };
-		FF4BA0CB24232211004CF912 /* SampleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTableViewController.swift; sourceTree = "<group>"; };
+		FF6D1EE12429C58B009EF83F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../../../.Trash/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FFBB990F9214C143C6ED2209 /* Pods-NewsReaderApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsReaderApplication.debug.xcconfig"; path = "Target Support Files/Pods-NewsReaderApplication/Pods-NewsReaderApplication.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,11 +131,9 @@
 				FF4BA089242076D9004CF912 /* AppDelegate.swift */,
 				FF4BA08B242076D9004CF912 /* SceneDelegate.swift */,
 				FF4BA0B0242084DC004CF912 /* NewsListViewController.swift */,
-				FF4BA0CB24232211004CF912 /* SampleTableViewController.swift */,
 				FF4BA0C22420E238004CF912 /* NewsDetailViewContoller.swift */,
-				FF4BA08F242076D9004CF912 /* Main.storyboard */,
+				FF6D1EE12429C58B009EF83F /* LaunchScreen.storyboard */,
 				FF4BA095242076DD004CF912 /* Assets.xcassets */,
-				FF4BA097242076DD004CF912 /* LaunchScreen.storyboard */,
 				FF4BA09A242076DD004CF912 /* Info.plist */,
 				FF4BA092242076D9004CF912 /* NewsReaderApplication.xcdatamodeld */,
 			);
@@ -212,7 +206,6 @@
 				FF4BA09B242076DE004CF912 /* Sources */,
 				FF4BA09C242076DE004CF912 /* Frameworks */,
 				FF4BA09D242076DE004CF912 /* Resources */,
-				3F00943926528C8065B2C37F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -267,9 +260,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF4BA099242076DD004CF912 /* LaunchScreen.storyboard in Resources */,
 				FF4BA096242076DD004CF912 /* Assets.xcassets in Resources */,
-				FF4BA091242076D9004CF912 /* Main.storyboard in Resources */,
+				FF6D1EE22429C58B009EF83F /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,23 +295,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3F00943926528C8065B2C37F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NewsReaderApplicationTests/Pods-NewsReaderApplicationTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NewsReaderApplicationTests/Pods-NewsReaderApplicationTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NewsReaderApplicationTests/Pods-NewsReaderApplicationTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CE639537BC28E35A400733FE /* [CP] Embed Pods Frameworks */ = {
@@ -371,7 +346,6 @@
 				FF4BA0B1242084DC004CF912 /* NewsListViewController.swift in Sources */,
 				FF4BA0C32420E238004CF912 /* NewsDetailViewContoller.swift in Sources */,
 				FF4BA0C12420D484004CF912 /* NewsItemDetail.swift in Sources */,
-				FF4BA0CC24232211004CF912 /* SampleTableViewController.swift in Sources */,
 				FF4BA0B724209282004CF912 /* NewsItem.swift in Sources */,
 				FF4BA0B4242085B0004CF912 /* ResponseParser.swift in Sources */,
 				FF4BA0BA2420A8C9004CF912 /* SentenceAnalyzer.swift in Sources */,
@@ -400,25 +374,6 @@
 			targetProxy = FF4BA0A0242076DE004CF912 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		FF4BA08F242076D9004CF912 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FF4BA090242076D9004CF912 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		FF4BA097242076DD004CF912 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FF4BA098242076DD004CF912 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		FF4BA0A6242076DE004CF912 /* Debug */ = {

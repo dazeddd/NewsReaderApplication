@@ -20,16 +20,13 @@ class NewsCustomCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        // default image
         thumnailImageView.image = UIImage(named: "noimage")
-
-//        keywordGroup.axis = .horizontal
-//        keywordGroup.alignment = .fill
-//        keywordGroup.distribution = .fillProportionally
-//        keywordGroup.spacing = 3
-//        keywordGroup.translatesAutoresizingMaskIntoConstraints = false
-
         
+//        newsTitleLabel.adjustsFontSizeToFitWidth = true
+        newsTitleLabel.font = UIFont.systemFont(ofSize: 13)
+        
+        newsTextPiece.font = UIFont.systemFont(ofSize: 13)
+        newsTextPiece.numberOfLines = 2
         
         layout()
     }

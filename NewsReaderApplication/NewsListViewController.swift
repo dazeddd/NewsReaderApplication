@@ -7,9 +7,7 @@
 //
 
 import UIKit
-import RxCocoa
-import RxSwift
-import RxAppState
+import SnapKit
 
 
 class NewsListViewController: UIViewController {
@@ -26,6 +24,7 @@ class NewsListViewController: UIViewController {
     
 //    @IBOutlet weak var newsListView: UITableView!
     let newsListView = UITableView()
+    let tableActivityIndicator = UIActivityIndicatorView()
     let refershControl = UIRefreshControl()
     
     let responseParser = ResponseParserImpl()
@@ -38,7 +37,27 @@ class NewsListViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         view.addSubview(newsListView)
+        view.addSubview(tableActivityIndicator)
+        
+        // Do any additional setup after loading the view.
+        newsListView.register(NewsCustomCell.self, forCellReuseIdentifier: "newsCell")
+        newsListView.frame = self.view.bounds
+        
+        
+        tableActivityIndicator.style = .gray
+        tableActivityIndicator.color = .black
+        tableActivityIndicator.hidesWhenStopped = true
+        tableActivityIndicator.snp.makeConstraints { (make) in
+            make.center.equalTo(self.view)
+        }
+        
+        tableActivityIndicator.startAnimating()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         
         responseParser.getParsedXML(completion: { (result) in
             switch result {
@@ -49,21 +68,17 @@ class NewsListViewController: UIViewController {
                 
             }
         })
-
-        // Do any additional setup after loading the view.
-        newsListView.register(NewsCustomCell.self, forCellReuseIdentifier: "newsCell")
+        
         newsListView.delegate = self
         newsListView.dataSource = self
         
-        newsListView.frame = self.view.bounds
         newsListView.refreshControl = self.refershControl
         self.refershControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         self.refershControl.attributedTitle = NSAttributedString(string: "업데이트 진행 중")
         
-        
-        
-        
     }
+    
+    
     
     @objc func refresh() {
         
@@ -102,8 +117,6 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
         
         
         // thumbnail 이미지 설정
-        
-
         if let url = URL(string: cellData[indexPath.row].newsDetail.thumnailURL) {
             
             do {
@@ -115,20 +128,15 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
                 
             }
         }
-            
-                
-//        }
         
         // 타이틀 텍스트
         cell.newsTitleLabel.text = cellData[indexPath.row].title
+        
         // 뉴스 본문 일부
         cell.newsTextPiece.text = cellData[indexPath.row].newsDetail.description
         
-        
-        // 버튼 스택 뷰에 버튼 subview 로 추가하기
-        let keyword_list = sentenceAnalyzer.startAnalizing(sentence: cellData[indexPath.row].newsDetail.description)
-        let joinedKeyword = keyword_list.joined(separator: "/")
-        
+        // 추출한 키워드
+        let joinedKeyword = sentenceAnalyzer.startAnalizing(sentence: cellData[indexPath.row].newsDetail.description)
         cell.keywordGroup.text = joinedKeyword
         
         return cell
@@ -136,16 +144,27 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        self.navigationController?.pushViewController(NewsDetailViewController(cellData: cellData[indexPath.row]), animated: true)
+        let newsDetailVC = NewsDetailViewController(item: cellData[indexPath.row])
         
+        guard let navi = self.navigationController else {
+            print("cannot find navigation controller")
+            return
+        }
+            
+        navi.pushViewController(newsDetailVC, animated: true)
+        
+            
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return 150
     }
-
     
     
-
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        tableActivityIndicator.stopAnimating()
+    }
+    
 }

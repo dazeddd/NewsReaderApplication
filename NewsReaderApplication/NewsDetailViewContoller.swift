@@ -12,12 +12,11 @@ import SnapKit
 
 class NewsDetailViewController: UIViewController, WKUIDelegate {
     
-    var cellData: NewsItem!
+    var item: NewsItem!
     
-    
-    init(cellData: NewsItem) {
+    init(item: NewsItem) {
         super.init(nibName: nil, bundle: nil)
-        self.cellData = cellData
+        self.item = item
     }
     
     required init?(coder: NSCoder) {
@@ -28,14 +27,10 @@ class NewsDetailViewController: UIViewController, WKUIDelegate {
     
     let titleLabel = UILabel()
     let keywordGroup = UILabel()
-    var linkNewsView: WKWebView!
+    let linkNewsView = WKWebView()
     
-    override func loadView() {
-        let webConfiguration = WKWebViewConfiguration()
-        linkNewsView = WKWebView(frame: .zero, configuration: webConfiguration)
-        linkNewsView.uiDelegate = self
-        
-    }
+    let navigatingIndicator = UIActivityIndicatorView()
+    
     
     
     override func viewDidLoad() {
@@ -43,27 +38,39 @@ class NewsDetailViewController: UIViewController, WKUIDelegate {
         
         layout()
         
+        self.view.backgroundColor = .yellow
+        
+        
         // 타이틀
-        titleLabel.text = cellData.title
+        titleLabel.text = self.item.title
+        titleLabel.numberOfLines = 2
+        titleLabel.layer.borderColor = UIColor.black.cgColor
+        titleLabel.layer.borderWidth = 2.0
+        titleLabel.backgroundColor = .white
         
         // 키워드 그룹
-//        keywordGroup.axis = .horizontal
-//        keywordGroup.alignment = .fill
-//        keywordGroup.distribution = .fillProportionally
-//        keywordGroup.spacing = 3
-//        keywordGroup.translatesAutoresizingMaskIntoConstraints = false
-        
-        let keyword_list = sentenceAnalyzer.startAnalizing(sentence: cellData.newsDetail.description)
-        let joinedKeyword = keyword_list.joined(separator: "/")
+
+        let joinedKeyword = sentenceAnalyzer.startAnalizing(sentence: self.item.newsDetail.description)
         keywordGroup.text = joinedKeyword
+        keywordGroup.layer.borderColor = UIColor.black.cgColor
+        keywordGroup.layer.borderWidth = 2.0
+        keywordGroup.backgroundColor = .white
         
-        // 웹뷰에 뉴스 원문이 보이게 해야 하는뎁
-        let webViewURL = URL(string: cellData.link)
-        let webViewRequest = URLRequest(url: webViewURL!)
+
+        // 웹뷰
+        guard let webViewURL = URL(string: self.item.link) else {
+            print("invalid url!")
+            return
+        }
+        let webViewRequest = URLRequest(url: webViewURL)
         linkNewsView.load(webViewRequest)
+        linkNewsView.layer.borderColor = UIColor.red.cgColor
+        linkNewsView.layer.borderWidth = 2.0
+        linkNewsView.navigationDelegate = self
         
-        
-        
+        // 웹뷰 navigating indicator
+        navigatingIndicator.startAnimating()
+        navigatingIndicator.hidesWhenStopped = true
     }
     
     private func layout() {
@@ -71,34 +78,48 @@ class NewsDetailViewController: UIViewController, WKUIDelegate {
         view.addSubview(titleLabel)
         view.addSubview(keywordGroup)
         view.addSubview(linkNewsView)
+        view.addSubview(navigatingIndicator)
         
         titleLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(self.view).offset(50)
-            make.left.equalTo(self.view).offset(70)
-            make.right.equalTo(self.view).offset(70)
+            make.top.equalTo(self.view).offset(160)
+            make.left.equalTo(self.view).offset(50)
+            make.right.equalTo(self.view).offset(-50)
             
         }
         
         keywordGroup.snp.makeConstraints { (make) in
-            make.top.equalTo(titleLabel.snp.bottom).offset(30)
-            make.left.equalTo(self.view).offset(70)
-            make.right.equalTo(self.view).offset(70)
+            make.top.equalTo(titleLabel.snp.bottom).offset(20)
+            make.left.equalTo(self.view).offset(50)
+            make.right.equalTo(self.view).offset(-50)
             
         }
         
         linkNewsView.snp.makeConstraints { (make) in
             make.top.equalTo(keywordGroup.snp.bottom).offset(50)
-            make.left.equalTo(self.view).offset(70)
-            make.right.equalTo(self.view).offset(70)
-            make.bottom.equalTo(self.view).offset(20)
+            make.left.equalTo(self.view).offset(30)
+            make.right.equalTo(self.view).offset(-30)
+            make.bottom.equalTo(self.view).offset(-100)
         }
         
-        
-        
-        
+        navigatingIndicator.snp.makeConstraints { (make) in
+            make.centerX.equalTo(self.view)
+            make.centerY.equalTo(linkNewsView.snp.centerY)
+        }
         
     }
     
 }
+
+extension NewsDetailViewController: WKNavigationDelegate {
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        
+        navigatingIndicator.stopAnimating()
+    }
+    
+}
+    
+
+
 
 

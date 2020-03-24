@@ -7,17 +7,17 @@ target 'NewsReaderApplication' do
 
   # Pods for NewsReaderApplication
   pod 'SwiftSoup'
-  pod 'RxSwift', '~> 5'
-  pod 'RxCocoa', '~> 5'
-  pod "RxAppState"
+#  pod 'RxSwift', '~> 5'
+#  pod 'RxCocoa', '~> 5'
+#  pod "RxAppState"
   pod 'SnapKit', '~> 5.0.0'
 
 
   target 'NewsReaderApplicationTests' do
     inherit! :search_paths
     # Pods for testing
-    pod 'RxBlocking', '~> 5'
-    pod 'RxTest', '~> 5'
+#    pod 'RxBlocking', '~> 5'
+#    pod 'RxTest', '~> 5'
 
   end
 
