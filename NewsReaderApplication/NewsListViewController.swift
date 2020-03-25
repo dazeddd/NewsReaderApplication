@@ -30,8 +30,7 @@ class NewsListViewController: UIViewController {
     let responseParser = ResponseParserImpl()
     let sentenceAnalyzer = SentenceAnalyzer()
     
-    
-    var cellData: [NewsItem]!
+    var cellData: [NewsItem] = []
     
     
     override func viewDidLoad() {
@@ -59,36 +58,36 @@ class NewsListViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        responseParser.getParsedXML(completion: { (result) in
-            switch result {
-            case .success(let result):
-                self.cellData = result
-            case .failure(let error):
-                print(error)
-                
-            }
-        })
+        if self.cellData.isEmpty {
+            responseParser.getParsedXML(completion: { (result) in
+                switch result {
+                case .success(let result):
+                    self.cellData = result
+                case .failure(let error):
+                    print(error)
+                    
+                }
+            })
+        }
         
         newsListView.delegate = self
         newsListView.dataSource = self
         
         newsListView.refreshControl = self.refershControl
         self.refershControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        self.refershControl.attributedTitle = NSAttributedString(string: "업데이트 진행 중")
+        self.refershControl.attributedTitle = NSAttributedString(string: "당겨서 새로고침")
         
     }
     
-    
-    
     @objc func refresh() {
-        
         getData {
-            
             self.refershControl.endRefreshing()
+            self.newsListView.reloadData()
         }
     }
     
     func getData(completion: @escaping () -> Void) {
+        
         responseParser.getParsedXML(completion: { (result) in
             switch result {
             case .success(let result):
@@ -150,9 +149,8 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
             print("cannot find navigation controller")
             return
         }
-            
         navi.pushViewController(newsDetailVC, animated: true)
-        
+        tableView.deselectRow(at: indexPath, animated: true)
             
     }
     
@@ -166,5 +164,7 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
         
         tableActivityIndicator.stopAnimating()
     }
+    
+    
     
 }

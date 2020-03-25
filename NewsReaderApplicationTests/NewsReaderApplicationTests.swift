@@ -30,5 +30,43 @@ class NewsReaderApplicationTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    // nil 체크 XCTAssertNil, XCTAssertNotNil
+    // String(contents0f: ) 리다이렉트된 url 의 html 가져올수있는지??
+    
+    func testHTMLParser() {
+        
+        
+    }
+    
+    func testResponseParser() {
+        
+        
+    }
+    
+    func testCellDataToDetailView() {
+        //given
+        
+        
+        //when
+        
+        
+        //then
+        let mainViewKeywordGroup: String
+        let detailViewKeywordGroup: String
+        
+    }
+    
+    func testRedirectCatcher() {
+        let redirectCatcher = RedirectCatcher2()
+
+        let actualValue = redirectCatcher.loadWebView(url: URL(string: "https://news.google.com/__i/rss/rd/articles/CBMiOGh0dHA6Ly93d3cuaGFuaS5jby5rci9hcnRpL3BvbGl0aWNzL2Fzc2VtYmx5LzkzNDA3NC5odG1s0gEA?oc=5")!)
+
+        let expectedValue = URL(string: "http://www.hani.co.kr/arti/politics/assembly/934074.html")!
+
+        XCTAssertEqual(actualValue, expectedValue)
+
+
+    }
 
 }

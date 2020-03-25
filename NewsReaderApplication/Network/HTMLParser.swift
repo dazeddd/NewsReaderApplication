@@ -9,26 +9,18 @@
 import Foundation
 import SwiftSoup
 
-//protocol HTMLParser {
-//
-//    var newsItemDetails: [NewsItemDetail] { get }
-//
-//    func startHTMLParsing(linkURL: URL)
-//
-//}
-
-
 
 class HTMLParserImpl {
     
     var detail: NewsItemDetail = NewsItemDetail(thumnailURL: "", description: "")
     var html: String = ""
+    let redirectCatcher = RedirectCatcher()
     
     func startHTMLParsing(linkURL: URL) -> NewsItemDetail {
         
-        
         do {
             // redirect 된 url 에서 html 가져와야 하는데..
+//            let redirectedURL = redirectCatcher.request(url: linkURL)
             let linkHTMLString = try String(contentsOf: linkURL, encoding: .utf8)
             self.html = linkHTMLString
         } catch {

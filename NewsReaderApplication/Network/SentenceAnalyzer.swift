@@ -54,14 +54,14 @@ class SentenceAnalyzer {
                 for element in sortedDic {
                     extractedWords.append(element.key)
                 }
-                joinedString = extractedWords.joined(separator: "/")
+                joinedString = extractedWords.map({ "#" + $0 }).joined(separator: " ")
                 return joinedString
             }
             
             for element in sortedDic[0...2] {
                 extractedWords.append(element.key)
             }
-            joinedString = extractedWords.joined(separator: "/")
+            joinedString = extractedWords.map({ "#" + $0 }).joined(separator: " ")
             return joinedString
             
         }

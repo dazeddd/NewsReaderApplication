@@ -95,7 +95,7 @@ class NewsDetailViewController: UIViewController, WKUIDelegate {
         }
         
         linkNewsView.snp.makeConstraints { (make) in
-            make.top.equalTo(keywordGroup.snp.bottom).offset(50)
+            make.top.equalTo(keywordGroup.snp.bottom).offset(30)
             make.left.equalTo(self.view).offset(30)
             make.right.equalTo(self.view).offset(-30)
             make.bottom.equalTo(self.view).offset(-100)

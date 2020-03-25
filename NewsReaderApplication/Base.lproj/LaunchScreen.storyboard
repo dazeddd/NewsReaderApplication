@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BT9-10-Pg7">
+                                <rect key="frame" x="170" y="730.5" width="74" height="31.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NewsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ZfP-z2-rMG">
+                                <rect key="frame" x="106" y="124" width="210" height="210"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="210" id="Ata-do-4Vm"/>
+                                    <constraint firstAttribute="height" constant="210" id="LK0-Zz-c9s"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RSSIcon" translatesAutoresizingMaskIntoConstraints="NO" id="DD6-Qo-cEe">
+                                <rect key="frame" x="28" y="274" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="RZj-HY-ktv"/>
+                                    <constraint firstAttribute="height" constant="70" id="txU-ub-z7h"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GlobeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="RZU-o5-IAT">
+                                <rect key="frame" x="324" y="274" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="5E0-V2-H2H"/>
+                                    <constraint firstAttribute="height" constant="70" id="OY8-7A-N8c"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FiC-TQ-DdO">
+                                <rect key="frame" x="100" y="410" width="214" height="76.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="당신이 보고 싶은 뉴스를" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nLb-Es-Rn5">
+                                        <rect key="frame" x="0.0" y="0.0" width="214" height="25.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="키워드와 함께" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T40-Qd-dho">
+                                        <rect key="frame" x="0.0" y="25.5" width="214" height="25.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="한곳에서 편리하게" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vf8-aI-llT">
+                                        <rect key="frame" x="0.0" y="51" width="214" height="25.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="RZU-o5-IAT" firstAttribute="leading" secondItem="ZfP-z2-rMG" secondAttribute="trailing" constant="8" id="0AX-m4-iu1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RZU-o5-IAT" secondAttribute="trailing" constant="20" id="0KZ-uN-Ufg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FiC-TQ-DdO" secondAttribute="trailing" constant="100" id="5k1-U1-DHO"/>
+                            <constraint firstItem="RZU-o5-IAT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="230" id="7bo-lU-RQr"/>
+                            <constraint firstItem="ZfP-z2-rMG" firstAttribute="leading" secondItem="DD6-Qo-cEe" secondAttribute="trailing" constant="8" id="9HC-CO-CVc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="RZU-o5-IAT" secondAttribute="bottom" constant="518" id="HST-to-Ky0"/>
+                            <constraint firstItem="FiC-TQ-DdO" firstAttribute="top" secondItem="ZfP-z2-rMG" secondAttribute="bottom" constant="76" id="Nye-vb-gMq"/>
+                            <constraint firstItem="DD6-Qo-cEe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="28" id="PoU-57-s00"/>
+                            <constraint firstItem="ZfP-z2-rMG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="Z8B-FY-Bpk"/>
+                            <constraint firstItem="BT9-10-Pg7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="170" id="ZZL-ZM-XcD"/>
+                            <constraint firstItem="FiC-TQ-DdO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="doo-PN-H7q"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DD6-Qo-cEe" secondAttribute="bottom" constant="518" id="ib9-1N-R2e"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BT9-10-Pg7" secondAttribute="bottom" constant="100" id="mwP-Ya-SVJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BT9-10-Pg7" secondAttribute="trailing" constant="170" id="nhq-LL-JSy"/>
+                            <constraint firstItem="DD6-Qo-cEe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="230" id="zyc-BF-RHW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-200.00000000000003" y="152.67857142857142"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="GlobeIcon" width="601" height="601"/>
+        <image name="NewsIcon" width="524" height="438"/>
+        <image name="RSSIcon" width="282" height="262"/>
+    </resources>
+</document>
