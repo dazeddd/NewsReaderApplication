@@ -26,19 +26,12 @@ class ResponseParserImpl: NSObject, XMLParserDelegate {
     var title: String = ""
     var link: String = ""
     
-//    var flag: Bool = false
     
     let htmlParser = HTMLParserImpl()
     
-    func getParsedXML(completion: @escaping (Result<[NewsItem],NewsError>) -> Void ) {
+    func getParsedXML(url: URL, completion: @escaping (Result<[NewsItem],NewsError>) -> Void ) {
         
-        guard let rssURL = URL(string: "https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko") else {
-            print("invalid rss url")
-            completion(.failure(.url))
-            return
-        }
-        
-        guard let parser = XMLParser(contentsOf: rssURL) else {
+        guard let parser = XMLParser(contentsOf: url) else {
             print("cannot get XML")
             completion(.failure(.parsing))
             return
@@ -75,6 +68,10 @@ class ResponseParserImpl: NSObject, XMLParserDelegate {
             let url = URL(string: self.link)
             self.newsItemDetail = htmlParser.startHTMLParsing(linkURL: url!)
             
+            // news detail 이 온전한 경우에만 newsitems 리스트에 더해준다
+            if (newsItemDetail.description == "" || newsItemDetail.thumnailURL == "") {
+                return
+            }
             newsItem = NewsItem(title: self.title, link: self.link, newsDetail: self.newsItemDetail)
             newsItems.append(newsItem)
         }

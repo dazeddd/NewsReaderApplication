@@ -14,7 +14,7 @@ class HTMLParserImpl {
     
     var detail: NewsItemDetail = NewsItemDetail(thumnailURL: "", description: "")
     var html: String = ""
-    let redirectCatcher = RedirectCatcher()
+    
     
     func startHTMLParsing(linkURL: URL) -> NewsItemDetail {
         

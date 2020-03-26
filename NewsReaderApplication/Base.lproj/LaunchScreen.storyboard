@@ -30,17 +30,10 @@
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RSSIcon" translatesAutoresizingMaskIntoConstraints="NO" id="DD6-Qo-cEe">
-                                <rect key="frame" x="28" y="274" width="70" height="70"/>
+                                <rect key="frame" x="28" y="264" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="RZj-HY-ktv"/>
                                     <constraint firstAttribute="height" constant="70" id="txU-ub-z7h"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GlobeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="RZU-o5-IAT">
-                                <rect key="frame" x="324" y="274" width="70" height="70"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="5E0-V2-H2H"/>
-                                    <constraint firstAttribute="height" constant="70" id="OY8-7A-N8c"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FiC-TQ-DdO">
@@ -66,24 +59,31 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GlobeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="RZU-o5-IAT">
+                                <rect key="frame" x="324" y="264" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="5E0-V2-H2H"/>
+                                    <constraint firstAttribute="height" constant="70" id="OY8-7A-N8c"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="RZU-o5-IAT" firstAttribute="leading" secondItem="ZfP-z2-rMG" secondAttribute="trailing" constant="8" id="0AX-m4-iu1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RZU-o5-IAT" secondAttribute="trailing" constant="20" id="0KZ-uN-Ufg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FiC-TQ-DdO" secondAttribute="trailing" constant="100" id="5k1-U1-DHO"/>
-                            <constraint firstItem="RZU-o5-IAT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="230" id="7bo-lU-RQr"/>
                             <constraint firstItem="ZfP-z2-rMG" firstAttribute="leading" secondItem="DD6-Qo-cEe" secondAttribute="trailing" constant="8" id="9HC-CO-CVc"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="RZU-o5-IAT" secondAttribute="bottom" constant="518" id="HST-to-Ky0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="RZU-o5-IAT" secondAttribute="bottom" constant="528" id="JJe-yC-MRs"/>
                             <constraint firstItem="FiC-TQ-DdO" firstAttribute="top" secondItem="ZfP-z2-rMG" secondAttribute="bottom" constant="76" id="Nye-vb-gMq"/>
                             <constraint firstItem="DD6-Qo-cEe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="28" id="PoU-57-s00"/>
+                            <constraint firstItem="RZU-o5-IAT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="220" id="U31-AY-fBa"/>
                             <constraint firstItem="ZfP-z2-rMG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="Z8B-FY-Bpk"/>
                             <constraint firstItem="BT9-10-Pg7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="170" id="ZZL-ZM-XcD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DD6-Qo-cEe" secondAttribute="bottom" constant="528" id="a8F-w9-Q4b"/>
                             <constraint firstItem="FiC-TQ-DdO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="doo-PN-H7q"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DD6-Qo-cEe" secondAttribute="bottom" constant="518" id="ib9-1N-R2e"/>
+                            <constraint firstItem="DD6-Qo-cEe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="220" id="iA3-1f-sst"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BT9-10-Pg7" secondAttribute="bottom" constant="100" id="mwP-Ya-SVJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BT9-10-Pg7" secondAttribute="trailing" constant="170" id="nhq-LL-JSy"/>
-                            <constraint firstItem="DD6-Qo-cEe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="230" id="zyc-BF-RHW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

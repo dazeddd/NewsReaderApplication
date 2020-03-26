@@ -44,7 +44,7 @@ class NewsDetailViewController: UIViewController, WKUIDelegate {
         // 타이틀
         titleLabel.text = self.item.title
         titleLabel.numberOfLines = 2
-        titleLabel.layer.borderColor = UIColor.black.cgColor
+        titleLabel.layer.borderColor = UIColor.red.cgColor
         titleLabel.layer.borderWidth = 2.0
         titleLabel.backgroundColor = .white
         
@@ -52,7 +52,7 @@ class NewsDetailViewController: UIViewController, WKUIDelegate {
 
         let joinedKeyword = sentenceAnalyzer.startAnalizing(sentence: self.item.newsDetail.description)
         keywordGroup.text = joinedKeyword
-        keywordGroup.layer.borderColor = UIColor.black.cgColor
+        keywordGroup.layer.borderColor = UIColor.red.cgColor
         keywordGroup.layer.borderWidth = 2.0
         keywordGroup.backgroundColor = .white
         

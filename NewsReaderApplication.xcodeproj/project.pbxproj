@@ -23,8 +23,6 @@
 		FF4BA0C12420D484004CF912 /* NewsItemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4BA0C02420D484004CF912 /* NewsItemDetail.swift */; };
 		FF4BA0C32420E238004CF912 /* NewsDetailViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4BA0C22420E238004CF912 /* NewsDetailViewContoller.swift */; };
 		FF6D1EE5242A0697009EF83F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF6D1EE3242A0696009EF83F /* LaunchScreen.storyboard */; };
-		FF6D1EE7242B16DB009EF83F /* RedirectCatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6D1EE6242B16DB009EF83F /* RedirectCatcher.swift */; };
-		FF6D1EE9242B752A009EF83F /* RedirectCatcher2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6D1EE8242B752A009EF83F /* RedirectCatcher2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,8 +59,6 @@
 		FF4BA0C02420D484004CF912 /* NewsItemDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItemDetail.swift; sourceTree = "<group>"; };
 		FF4BA0C22420E238004CF912 /* NewsDetailViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewContoller.swift; sourceTree = "<group>"; };
 		FF6D1EE4242A0696009EF83F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		FF6D1EE6242B16DB009EF83F /* RedirectCatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedirectCatcher.swift; sourceTree = "<group>"; };
-		FF6D1EE8242B752A009EF83F /* RedirectCatcher2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedirectCatcher2.swift; sourceTree = "<group>"; };
 		FF6D1EEA242B83E9009EF83F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FFBB990F9214C143C6ED2209 /* Pods-NewsReaderApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsReaderApplication.debug.xcconfig"; path = "Target Support Files/Pods-NewsReaderApplication/Pods-NewsReaderApplication.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,8 +157,6 @@
 				FF4BA0B3242085B0004CF912 /* ResponseParser.swift */,
 				FF4BA0BE2420C728004CF912 /* HTMLParser.swift */,
 				FF4BA0B92420A8C9004CF912 /* SentenceAnalyzer.swift */,
-				FF6D1EE6242B16DB009EF83F /* RedirectCatcher.swift */,
-				FF6D1EE8242B752A009EF83F /* RedirectCatcher2.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -356,10 +350,8 @@
 				FF4BA0C12420D484004CF912 /* NewsItemDetail.swift in Sources */,
 				FF4BA0B724209282004CF912 /* NewsItem.swift in Sources */,
 				FF4BA0B4242085B0004CF912 /* ResponseParser.swift in Sources */,
-				FF6D1EE9242B752A009EF83F /* RedirectCatcher2.swift in Sources */,
 				FF4BA0BA2420A8C9004CF912 /* SentenceAnalyzer.swift in Sources */,
 				FF4BA08A242076D9004CF912 /* AppDelegate.swift in Sources */,
-				FF6D1EE7242B16DB009EF83F /* RedirectCatcher.swift in Sources */,
 				FF4BA094242076D9004CF912 /* NewsReaderApplication.xcdatamodeld in Sources */,
 				FF4BA08C242076D9004CF912 /* SceneDelegate.swift in Sources */,
 				FF4BA0BD2420BE7F004CF912 /* NewsCustomCell.swift in Sources */,

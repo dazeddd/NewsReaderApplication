@@ -31,7 +31,7 @@ class NewsListViewController: UIViewController {
     let sentenceAnalyzer = SentenceAnalyzer()
     
     var cellData: [NewsItem] = []
-    
+    var url: URL = URL(string: "https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko")!
     
     override func viewDidLoad() {
         
@@ -59,15 +59,15 @@ class NewsListViewController: UIViewController {
         super.viewDidAppear(true)
         
         if self.cellData.isEmpty {
-            responseParser.getParsedXML(completion: { (result) in
+            responseParser.getParsedXML(url: url) { (result) in
                 switch result {
                 case .success(let result):
                     self.cellData = result
                 case .failure(let error):
                     print(error)
-                    
+
                 }
-            })
+            }
         }
         
         newsListView.delegate = self
@@ -88,16 +88,16 @@ class NewsListViewController: UIViewController {
     
     func getData(completion: @escaping () -> Void) {
         
-        responseParser.getParsedXML(completion: { (result) in
+        responseParser.getParsedXML(url: url) { (result) in
             switch result {
             case .success(let result):
                 self.cellData = result
             case .failure(let error):
                 print(error)
-                
+
             }
-            completion()
-        })
+        }
+        
     }
     
 }
