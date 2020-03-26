@@ -19,12 +19,12 @@ class HTMLParserImpl {
     func startHTMLParsing(linkURL: URL) -> NewsItemDetail {
         
         do {
-            // redirect 된 url 에서 html 가져와야 하는데..
 //            let redirectedURL = redirectCatcher.request(url: linkURL)
             let linkHTMLString = try String(contentsOf: linkURL, encoding: .utf8)
             self.html = linkHTMLString
         } catch {
             print(error)
+            print("unable to get html from this original news link")
             return NewsItemDetail(thumnailURL: "", description: "")
         }
            

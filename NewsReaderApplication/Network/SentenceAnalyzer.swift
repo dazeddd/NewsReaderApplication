@@ -37,8 +37,8 @@ class SentenceAnalyzer {
             let sortedDic = keywordList.sorted {
                 if ($0.value > $1.value) {
                     return true
-                } else if ($0.value == $0.value) {
-                    if ($0.key < $0.key) {
+                } else if ($0.value == $1.value) {
+                    if ($0.key < $1.key) {
                         return true
                     } else {
                         return false

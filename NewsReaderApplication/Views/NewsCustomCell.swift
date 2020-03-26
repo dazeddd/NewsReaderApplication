@@ -23,6 +23,7 @@ class NewsCustomCell: UITableViewCell {
         thumnailImageView.image = UIImage(named: "noimage")
         
 //        newsTitleLabel.adjustsFontSizeToFitWidth = true
+        newsTitleLabel.textAlignment = .left
         newsTitleLabel.font = UIFont.systemFont(ofSize: 13)
         
         newsTextPiece.font = UIFont.systemFont(ofSize: 13)
@@ -69,11 +70,6 @@ class NewsCustomCell: UITableViewCell {
             make.bottom.equalTo(self).offset(-20)
             make.right.equalTo(self).offset(-10)
         }
-        
-        
-        
-        
-        
         
         
     }

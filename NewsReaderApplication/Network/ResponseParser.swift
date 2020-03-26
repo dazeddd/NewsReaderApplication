@@ -8,9 +8,16 @@
 
 import Foundation
 
+
 enum NewsError: Error {
-    case url
-    case parsing
+    case parsing(String)
+
+    var errorDescription: String? {
+        switch self {
+        case let .parsing(msg):
+            return msg
+        }
+    }
 }
 
 
@@ -32,8 +39,7 @@ class ResponseParserImpl: NSObject, XMLParserDelegate {
     func getParsedXML(url: URL, completion: @escaping (Result<[NewsItem],NewsError>) -> Void ) {
         
         guard let parser = XMLParser(contentsOf: url) else {
-            print("cannot get XML")
-            completion(.failure(.parsing))
+            completion(.failure(.parsing("unable to parse xml")))
             return
         }
         

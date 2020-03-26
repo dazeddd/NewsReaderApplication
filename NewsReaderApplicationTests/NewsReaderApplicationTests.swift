@@ -43,9 +43,6 @@ class NewsReaderApplicationTests: XCTestCase {
         
     }
     
-    
-    
-    // fail ...
     func testKeywordExtractionLogic() {
         let analyzer = SentenceAnalyzer()
         let sentence = "깃헙 사이트 상에서 리드미를 작성할 수도 있지만 저는 로컬 디렉터리상에서 직접 작성하는 것을 선호합니다."

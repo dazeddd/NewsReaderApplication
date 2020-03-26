@@ -25,7 +25,7 @@ class NewsListViewController: UIViewController {
 //    @IBOutlet weak var newsListView: UITableView!
     let newsListView = UITableView()
     let tableActivityIndicator = UIActivityIndicatorView()
-    let refershControl = UIRefreshControl()
+    let refreshControl = UIRefreshControl()
     
     let responseParser = ResponseParserImpl()
     let sentenceAnalyzer = SentenceAnalyzer()
@@ -73,16 +73,19 @@ class NewsListViewController: UIViewController {
         newsListView.delegate = self
         newsListView.dataSource = self
         
-        newsListView.refreshControl = self.refershControl
-        self.refershControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        self.refershControl.attributedTitle = NSAttributedString(string: "당겨서 새로고침")
+        newsListView.refreshControl = self.refreshControl
+        newsListView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        newsListView.refreshControl?.attributedTitle = NSAttributedString(string: "당겨서 새로고침")
         
     }
     
+    
     @objc func refresh() {
         getData {
-            self.refershControl.endRefreshing()
             self.newsListView.reloadData()
+            DispatchQueue.main.async {
+                self.newsListView.refreshControl?.endRefreshing()
+            }
         }
     }
     
@@ -94,10 +97,10 @@ class NewsListViewController: UIViewController {
                 self.cellData = result
             case .failure(let error):
                 print(error)
-
             }
-        }
         
+        }
+        completion()
     }
     
 }

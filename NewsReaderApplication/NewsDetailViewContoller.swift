@@ -38,22 +38,22 @@ class NewsDetailViewController: UIViewController, WKUIDelegate {
         
         layout()
         
-        self.view.backgroundColor = .yellow
+        self.view.backgroundColor = .white
         
         
         // 타이틀
         titleLabel.text = self.item.title
         titleLabel.numberOfLines = 2
-        titleLabel.layer.borderColor = UIColor.red.cgColor
-        titleLabel.layer.borderWidth = 2.0
+//        titleLabel.layer.borderColor = UIColor.red.cgColor
+//        titleLabel.layer.borderWidth = 2.0
         titleLabel.backgroundColor = .white
         
         // 키워드 그룹
 
         let joinedKeyword = sentenceAnalyzer.startAnalizing(sentence: self.item.newsDetail.description)
         keywordGroup.text = joinedKeyword
-        keywordGroup.layer.borderColor = UIColor.red.cgColor
-        keywordGroup.layer.borderWidth = 2.0
+//        keywordGroup.layer.borderColor = UIColor.red.cgColor
+//        keywordGroup.layer.borderWidth = 2.0
         keywordGroup.backgroundColor = .white
         
 
@@ -64,7 +64,7 @@ class NewsDetailViewController: UIViewController, WKUIDelegate {
         }
         let webViewRequest = URLRequest(url: webViewURL)
         linkNewsView.load(webViewRequest)
-        linkNewsView.layer.borderColor = UIColor.red.cgColor
+        linkNewsView.layer.borderColor = UIColor.gray.cgColor
         linkNewsView.layer.borderWidth = 2.0
         linkNewsView.navigationDelegate = self
         
@@ -96,9 +96,9 @@ class NewsDetailViewController: UIViewController, WKUIDelegate {
         
         linkNewsView.snp.makeConstraints { (make) in
             make.top.equalTo(keywordGroup.snp.bottom).offset(30)
-            make.left.equalTo(self.view).offset(30)
-            make.right.equalTo(self.view).offset(-30)
-            make.bottom.equalTo(self.view).offset(-100)
+            make.left.equalTo(self.view).offset(20)
+            make.right.equalTo(self.view).offset(-20)
+            make.bottom.equalTo(self.view).offset(-50)
         }
         
         navigatingIndicator.snp.makeConstraints { (make) in
