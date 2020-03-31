@@ -6,7 +6,7 @@ MyRealTrip App Challenge
 ## Screenshot
 <div>
 <img width="220" alt="스크린샷 2020-03-26 오전 10 22 39" src="https://user-images.githubusercontent.com/59472056/77600623-d1203280-6f4b-11ea-9d1e-188b034c5ba8.png">
-<img width="351" alt="스크린샷 2020-03-26 오전 11 07 17" src="https://user-images.githubusercontent.com/59472056/77602887-fadc5800-6f51-11ea-8c75-af015ce7d320.png">
+<img width="220" alt="스크린샷 2020-03-26 오전 11 07 17" src="https://user-images.githubusercontent.com/59472056/77602887-fadc5800-6f51-11ea-8c75-af015ce7d320.png">
 <img width="220" alt="스크린샷 2020-03-26 오전 11 05 43" src="https://user-images.githubusercontent.com/59472056/77602817-cd8faa00-6f51-11ea-8e69-782c97f65c02.png">
 </div>
 
@@ -18,7 +18,7 @@ MyRealTrip App Challenge
 
 ## 삽질기
 
-1. RSS XML 을 파싱하여 link 태그에서 url 을 가져오는데 기사 원문 html 을 가져오는 경우도 있었고 html 을 못가져오는 경우도 있었습니다. 
+1. link url 과 못가져오는 html 처리 : RSS XML link 태그에서 가져온 url 로 기사 원문 html 을 가져오는 경우도 있었고 html 을 못가져오는 경우도 있었습니다. 
 ```
 let html = try String(contentsOf: url) 
 ```
@@ -38,13 +38,13 @@ if (newsItemDetail.description == "" || newsItemDetail.thumnailURL == "") {
 newsItem = NewsItem(title: self.title, link: self.link, newsDetail: self.newsItemDetail)
 newsItems.append(newsItem)
 ```
-2.  파싱 속도 높이기: xml 의 item link 로 가져온 뉴스 링크 html  20개 가량을 클라이언트 측에서 파싱하다 보니 시간이 많이 든다. 
+2.  파싱 속도 : xml 의 item link 로 가져온 뉴스 링크 html (문자열)  20개 가량을 클라이언트 측에서 파싱하다 보니 시간이 많이 든다. 
     서버 측에서 미리 파싱한 데이터를  request 로 받아오게 구현한다면 클라이언트에서 더 빨리 데이터를 띄울 수 있을 거 같다. 
      
-3.  키워드 추출 알고리즘, 추출한 단어 전처리 (불필요한 문자 제거)
+3.  키워드 추출 알고리즘
 
-4.  refresh control 액션으로 최신 뉴스 아이템들을 받아올 동안 refresh control 을 움직이게 하고 싶었는데 
-여러 모로 테스트해본 결과 refresh control 은 데이터를 받아온 후 endRefreshing 이 호출 될 때에야 움직이는 컨트롤이라는 것을 깨달았다.
+4.  refresh control 액션으로 최신 뉴스 아이템들을 받아올 동안(파싱 시간 동안) refresh control 을 움직이게 하고 싶었는데 
+여러 모로 테스트해본 결과 refresh control 은 데이터를 최신화 한 후 endRefreshing 이 호출 될 때에야 움직이는 컨트롤이라는 것을 알았다.
 
 
 ## 돌아보며

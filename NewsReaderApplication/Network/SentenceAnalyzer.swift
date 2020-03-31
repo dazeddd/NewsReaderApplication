@@ -20,7 +20,6 @@ class SentenceAnalyzer {
         if sentence == "" {
             return joinedString
         } else {
-            
             let word_list = sentence.split(separator: " ")
             for word in word_list {
                 let str = String(word)
@@ -48,7 +47,7 @@ class SentenceAnalyzer {
                 }
             }
             
-            
+            // 키워드 3개 이하로 뽑아내게
             guard sortedDic.count > 2 else {
                 
                 for element in sortedDic {

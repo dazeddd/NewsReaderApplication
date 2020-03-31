@@ -19,10 +19,7 @@ class NewsReaderApplicationTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    
-    // nil 체크 XCTAssertNil, XCTAssertNotNil
-    // String(contents0f: ) 리다이렉트된 url 의 html 가져올수있는지??
-    
+
     func testParsingHTMLRightTags() {
         
         // given
@@ -60,15 +57,17 @@ class NewsReaderApplicationTests: XCTestCase {
         let parser = ResponseParserImpl()
         let url: URL = URL(string: "https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko")!
         
-        parser.getParsedXML(url: url) { (result) in
-            switch result {
-            case .success(_):
-                return
-            case .failure(let error):
-                print(error)
-                
+        self.measure {
+            parser.getParsedXML(url: url) { (result) in
+                switch result {
+                case .success(_):
+                    return
+                case .failure(let error):
+                    print(error)
+                    
+                }
             }
         }
-
+        
     }
 }
