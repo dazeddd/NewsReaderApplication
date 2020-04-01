@@ -4,7 +4,6 @@
 //
 //  Created by 이준수 on 2020/03/17.
 //  Copyright © 2020 LeeJoonsoo. All rights reserved.
-//
 
 import UIKit
 import SnapKit
@@ -50,45 +49,23 @@ class NewsCustomCell: UITableViewCell {
             
             make.width.height.equalTo(110)
         }
-        
         newsTitleLabel.snp.makeConstraints { (make) in
             make.left.equalTo(thumnailImageView.snp.right).offset(20)
             make.top.equalTo(self).offset(20)
             make.right.equalTo(self).offset(-10)
         }
-        
         newsTextPiece.snp.makeConstraints { (make) in
             make.top.equalTo(newsTitleLabel.snp.bottom).offset(20)
             make.left.equalTo(thumnailImageView.snp.right).offset(20)
             make.right.equalTo(self).offset(-10)
         }
-        
-        
         keywordGroup.snp.makeConstraints { (make) in
             make.top.equalTo(newsTextPiece.snp.bottom).offset(20)
             make.left.equalTo(thumnailImageView.snp.right).offset(20)
             make.bottom.equalTo(self).offset(-20)
             make.right.equalTo(self).offset(-10)
         }
-        
-        
+            
     }
-    
-    
-//    func setData(data: NewsItem) {
-//
-//        do {
-//            let imageData = try Data(contentsOf: URL(string: data.newsDetail.thumnailURL)!)
-//            thumnailImageView.image = UIImage(data: imageData)
-//        } catch {
-//            print("cannot set thumnail image!!!")
-//        }
-//
-//        newsTitleLabel.text = data.title
-//        // 라벨에 맞게 길이 조절해야 하는데..
-//        newsTextPiece.text = data.newsDetail.description
-//        keywordGroup.buttonGroup.addA
-//
-//    }
 
 }

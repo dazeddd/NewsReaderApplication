@@ -36,8 +36,6 @@ class NewsReaderApplicationTests: XCTestCase {
         // then
         XCTAssertEqual(actualDetail.thumnailURL, expectedDetail.thumnailURL)
         XCTAssertEqual(actualDetail.description, expectedDetail.description)
-        
-        
     }
     
     func testKeywordExtractionLogic() {

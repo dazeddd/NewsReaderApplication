@@ -42,7 +42,6 @@ class ResponseParserImpl: NSObject, XMLParserDelegate {
             completion(.failure(.parsing("unable to parse xml")))
             return
         }
-        
         parser.delegate = self
         parser.parse()
         completion(.success(newsItems))

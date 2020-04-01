@@ -28,8 +28,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window = window
         }
         
-        
-        
         guard let _ = (scene as? UIWindowScene) else { return }
     }
 

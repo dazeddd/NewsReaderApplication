@@ -12,5 +12,4 @@ struct NewsItemDetail {
     
     let thumnailURL: String
     let description: String
-    
 }

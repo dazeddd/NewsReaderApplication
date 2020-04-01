@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:NewsReaderApplication/Network/../../MyPlayground.playground">
-   </FileRef>
-   <FileRef
       location = "group:NewsReaderApplication.xcodeproj">
    </FileRef>
    <FileRef
