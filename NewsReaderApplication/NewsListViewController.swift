@@ -119,15 +119,14 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
         
         
         // thumbnail 이미지 설정
-        if let url = URL(string: cellData[indexPath.row].newsDetail.thumnailURL) {
-            
-            do {
-                let imageData = try Data(contentsOf: url)
-                cell.thumnailImageView.image = UIImage(data: imageData)
-                
-            } catch {
-                print("cannot get imageData")
-                
+        DispatchQueue.main.async {
+            if let url = URL(string: self.cellData[indexPath.row].newsDetail.thumnailURL) {
+                do {
+                    let imageData = try Data(contentsOf: url)
+                    cell.thumnailImageView.image = UIImage(data: imageData)
+                } catch {
+                    print("cannot get imageData")
+                }
             }
         }
         
