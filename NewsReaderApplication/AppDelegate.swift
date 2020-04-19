@@ -17,14 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {
-            let navigationController = UINavigationController(rootViewController: NewsListViewController())
-            let window = UIWindow()
-            window.rootViewController = navigationController
-            window.makeKeyAndVisible()
-            
-            self.window = window
-        }
+        Thread.sleep(forTimeInterval: 1.3)
+        
+        let navigationController = UINavigationController(rootViewController: NewsListViewController())
+        let window = UIWindow()
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
+        
+        self.window = window
+    
         
         return true
     }
